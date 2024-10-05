@@ -9,7 +9,7 @@ const BusListPage = () => {
   const navigate = useNavigate();
 
   // Filter buses based on origin, destination, and date
-  const filteredBuses = busesData.filter(bus =>
+  const filtecyanBuses = busesData.filter(bus =>
     bus.origin.toLowerCase() === origin.toLowerCase() &&
     bus.destination.toLowerCase() === destination.toLowerCase() &&
     bus.date === date
@@ -23,8 +23,8 @@ const BusListPage = () => {
     <div>
       <h2>Available Buses from {origin} to {destination} on {date}</h2>
       <ul>
-        {filteredBuses.length > 0 ? (
-          filteredBuses.map(bus => (
+        {filtecyanBuses.length > 0 ? (
+          filtecyanBuses.map(bus => (
             <li key={bus.id}>
               <h4>{bus.name}</h4>
               <p>{`Bus Number: ${bus.busNumber}`}</p>

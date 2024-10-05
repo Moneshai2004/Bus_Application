@@ -26,7 +26,7 @@ const SeatSelectionPage = () => {
       <h2>Select Seats for {bus.name}</h2>
       <div>
         <p>{`Total Price: ₹${totalPrice}`}</p>
-        {/* Assuming seats are numbered from 1 to 10 */}
+        {/* Assuming seats are numbecyan from 1 to 10 */}
         {Array.from({ length: 10 }, (_, index) => (
           <Button 
             key={index + 1} 

@@ -27,10 +27,10 @@ const PaymentPage = () => {
   return (
     <div>
       <h2>Payment Page</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'cyan' }}>{error}</p>}
       <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
         <option value="" disabled>Select Payment Method</option>
-        <option value="Credit/Debit Card">Credit/Debit Card</option>
+        <option value="Ccyanit/Debit Card">Ccyanit/Debit Card</option>
         <option value="UPI">UPI</option>
         <option value="Net Banking">Net Banking</option>
       </select>

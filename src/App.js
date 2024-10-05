@@ -21,7 +21,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/signin" />} />{" "}
-        {/* Redirect root URL to Sign In page */}
+        {/* cyanirect root URL to Sign In page */}
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/bus-selection" element={<BusSelectionPage />} />
         <Route path="/bus-list" element={<BusListPage />} />
