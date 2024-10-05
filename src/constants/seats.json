@@ -1,0 +1,8 @@
+{
+  "1": {
+    "id": 1,
+    "busId": 1,
+    "availableSeats": [1, 2, 3, 4, 5],
+    "bookedSeats": [6, 7]
+  }
+}
