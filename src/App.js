@@ -14,6 +14,7 @@ import UserDetailsPage from "./pages/UserDetailsPage";
 import PaymentPage from "./pages/PaymentPage";
 import BookedTicketsPage from "./pages/BookedTicketsPage";
 import ViewTicketPage from "./pages/ViewTicketPage";
+import HomePage from "./pages/HomePage"; // Import the Home Page
 import LiveRoutePage from "./pages/LiveRoutePage"; // Import the Live Route Page
 
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/signin" />} />{" "}
-        {/* cyanirect root URL to Sign In page */}
+        {/* Redirect root URL to Sign In page */}
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/bus-selection" element={<BusSelectionPage />} />
         <Route path="/bus-list" element={<BusListPage />} />
@@ -29,9 +30,10 @@ const App = () => {
         <Route path="/user-details" element={<UserDetailsPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/view-ticket" element={<ViewTicketPage />} />
+        <Route path="/home" element={<HomePage />} /> {/* Add Home Page */}
+        <Route path="/booked-tickets" element={<BookedTicketsPage />} />
         <Route path="/live-route" element={<LiveRoutePage />} />{" "}
         {/* Add Live Route Page */}
-        <Route path="/booked-tickets" element={<BookedTicketsPage />} />
       </Routes>
     </Router>
   );

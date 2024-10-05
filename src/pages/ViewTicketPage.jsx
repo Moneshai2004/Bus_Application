@@ -1,74 +1,108 @@
 // src/pages/ViewTicketPage.js
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-
-// Create a default icon for the marker
-const DefaultIcon = L.icon({
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
-L.Marker.prototype.options.icon = DefaultIcon;
 
 const ViewTicketPage = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Use the navigate hook
+  const navigate = useNavigate();
   const { bus, selectedSeats, userDetails } = location.state;
 
-  // Sample coordinates for live location (you can replace it with real-time data)
-  const liveLocation = [13.0827, 80.2707]; // Chennai coordinates as an example
+  const handleDownload = () => {
+    const ticketDetails = `
+      Ticket Details:
+      Name: ${userDetails.name}
+      Age: ${userDetails.age}
+      Gender: ${userDetails.gender}
+      Bus Name: ${bus.name}
+      Bus Number: ${bus.busNumber}
+      Departure Location: ${bus.origin}
+      Destination: ${bus.destination}
+      Departure Date: ${bus.date}
+      Departure Time: ${bus.departureTime}
+      Arrival Time: ${bus.arrivalTime}
+      Journey Duration: ${bus.journeyDuration}
+      Seat Number(s): ${selectedSeats.join(', ')}
+      Ticket Price: ₹${bus.price}
+      Payment Status: Paid
+    `;
+    
+    const blob = new Blob([ticketDetails], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'ticket_details.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
 
-  const handleLiveRouteClick = () => {
-    navigate('/live-route', { state: { bus } }); // Navigate to Live Route Page
+  const handleLiveLocation = () => {
+    navigate('/live-route');
   };
 
   return (
-    <div>
-      <h2>View Ticket</h2>
-      <h3>Passenger Information</h3>
-      <p>Name: {userDetails.name}</p>
-      <p>Age: {userDetails.age}</p>
-      <p>Gender: {userDetails.gender}</p>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="max-w-[1200px] mx-auto p-6 bg-white rounded-xl shadow-md">
+        <h2 className="text-3xl font-semibold mb-6 text-blue-gray-900">View Ticket</h2>
 
-      <h3>Bus Information</h3>
-      <p>Bus Name: {bus.name}</p>
-      <p>Bus Number: {bus.busNumber}</p>
-      <p>Departure Location: {bus.origin}</p>
-      <p>Destination: {bus.destination}</p>
+        <div className="mb-4">
+          <h3 className="font-semibold text-2xl text-blue-gray-900">Passenger Information</h3>
+          <p className="text-gray-700 text-lg">Name: {userDetails.name}</p>
+          <p className="text-gray-700 text-lg">Age: {userDetails.age}</p>
+          <p className="text-gray-700 text-lg">Gender: {userDetails.gender}</p>
+        </div>
 
-      <h3>Journey Details</h3>
-      <p>Departure Date: {bus.date}</p>
-      <p>Departure Time: {bus.departureTime}</p>
-      <p>Arrival Time: {bus.arrivalTime}</p>
-      <p>Journey Duration: {bus.journeyDuration}</p>
+        <div className="mb-4">
+          <h3 className="font-semibold text-2xl text-blue-gray-900">Bus Information</h3>
+          <p className="text-gray-700 text-lg">Bus Name: {bus.name}</p>
+          <p className="text-gray-700 text-lg">Bus Number: {bus.busNumber}</p>
+          <p className="text-gray-700 text-lg">Departure Location: {bus.origin}</p>
+          <p className="text-gray-700 text-lg">Destination: {bus.destination}</p>
+        </div>
 
-      <h3>Seat Information</h3>
-      <p>Seat Number(s): {selectedSeats.join(', ')}</p>
+        <div className="mb-4">
+          <h3 className="font-semibold text-2xl text-blue-gray-900">Journey Details</h3>
+          <p className="text-gray-700 text-lg">Departure Date: {bus.date}</p>
+          <p className="text-gray-700 text-lg">Departure Time: {bus.departureTime}</p>
+          <p className="text-gray-700 text-lg">Arrival Time: {bus.arrivalTime}</p>
+          <p className="text-gray-700 text-lg">Journey Duration: {bus.journeyDuration}</p>
+        </div>
 
-      <h3>Payment Information</h3>
-      <p>Ticket Price: ₹{bus.price}</p>
-      <p>Payment Status: Paid</p>
+        <div className="mb-4">
+          <h3 className="font-semibold text-2xl text-blue-gray-900">Seat Information</h3>
+          <p className="text-gray-700 text-lg">Seat Number(s): {selectedSeats.join(', ')}</p>
+        </div>
 
-      <h3>Live Bus Route</h3>
-      <MapContainer center={liveLocation} zoom={13} style={{ height: '400px', width: '100%' }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        <Marker position={liveLocation}>
-          <Popup>
-            Live location of your bus!
-          </Popup>
-        </Marker>
-      </MapContainer>
+        <div className="mb-4">
+          <h3 className="font-semibold text-2xl text-blue-gray-900">Payment Information</h3>
+          <p className="text-gray-700 text-lg">Ticket Price: ₹{bus.price}</p>
+          <p className="text-gray-700 text-lg">Payment Status: Paid</p>
+        </div>
 
-      {/* Button to navigate to Live Route Page */}
-      <button onClick={handleLiveRouteClick}>Live Location</button>
+        {/* Button to navigate back */}
+        <button 
+          className="mt-4 w-full px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded-md transition-all" 
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </button>
+
+        {/* Button to download ticket details */}
+        <button 
+          className="mt-4 w-full px-4 py-2 text-white bg-green-500 hover:bg-green-600 rounded-md transition-all" 
+          onClick={handleDownload}
+        >
+          Download Ticket Details
+        </button>
+
+        {/* Button to view live location */}
+        <button 
+          className="mt-4 w-full px-4 py-2 text-white bg-yellow-500 hover:bg-yellow-600 rounded-md transition-all" 
+          onClick={handleLiveLocation}
+        >
+          View Live Location
+        </button>
+      </div>
     </div>
   );
 };
