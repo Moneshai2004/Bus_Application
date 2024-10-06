@@ -1,71 +1,86 @@
-# Getting Started with Create React App
+MyBusBooking Website
+Description
+MyBusBooking is a bus booking website built using React.js. The website allows users to search for buses, select seats, fill in personal details, make payments, and track live bus routes. It includes user authentication and various pages to streamline the entire bus booking process.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+User Authentication: Sign In page for user authentication.
+Bus Search: Users can search for buses by selecting origin, destination, and date.
+Bus List: View available buses, filter by seating type, rating, price, and time.
+Seat Selection: Interactive seat selection for users to choose their seats.
+User Details: Enter user information for ticket booking.
+Payment: Payment page to complete the booking.
+Booked Tickets: Review and manage booked tickets.
+Live Bus Route: Displays a live map for the bus's route, including real-time location tracking.
+Project Structure
+php
+Copy code
+mybusbooking/
+│
+├── public/                 # Public assets
+│
+├── src/                    
+│   ├── components/         # Reusable UI components
+│   │   └── navigation/     # Navigation-related components
+│   │       └── TabBarIcon.js   # Custom tab bar icon component
+│   │   
+│   ├── pages/              # Application pages
+│   │   ├── SignInPage.js   # Sign In page
+│   │   ├── BusSelectionPage.js  # Search page for buses
+│   │   ├── BusListPage.js  # Displays available bus options
+│   │   ├── SeatSelectionPage.js  # Seat selection page
+│   │   ├── UserDetailsPage.js    # User details input page
+│   │   ├── PaymentPage.js  # Payment page
+│   │   ├── BookedTicketsPage.js  # Displays user's booked tickets
+│   │   ├── ViewTicketPage.js # Displays ticket details and route
+│   │   └── HomePage.js      # Home page with live bus tracking
+│   │
+│   ├── contexts/           # Context for managing global state (e.g., BusContext)
+│   ├── constants/          # Project-wide constants (e.g., API URLs, data, icons)
+│   └── App.js              # Main application component
+│
+├── package.json            # Project dependencies and scripts
+└── README.md               # Project documentation
+Pages Overview
+SignInPage: The initial page where users can log in with their mobile number and password.
+BusSelectionPage: Allows users to search for buses by entering origin, destination, and travel dates.
+BusListPage: Displays a list of available buses based on the user’s search criteria.
+SeatSelectionPage: Users can select their seats interactively.
+UserDetailsPage: Users can fill in personal details such as name and contact information.
+PaymentPage: After entering details, users proceed to make payments.
+BookedTicketsPage: Shows the tickets users have already booked.
+ViewTicketPage: Displays the bus route, live bus location, and ticket information.
+HomePage: Displays live tracking of bus routes and available buses.
+Installation and Setup
 
-## Available Scripts
+Clone the repository:
+git clone https://github.com/yourusername/mybusbooking.git
 
-In the project directory, you can run:
+Navigate to the project directory:
 
-### `npm start`
+cd mybusbooking
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Install dependencies:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+yarn install
 
-### `npm test`
+Run the development server:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+yarn start
 
-### `npm run build`
+The website will be available at http://localhost:3000.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Dependencies
+React: Frontend framework.
+React Router: For page navigation.
+Leaflet: For displaying live bus routes on a map.
+Formik & Yup: For form handling and validation.
+Tailwind CSS: For styling.
+Live Bus Route Tracking
+The app uses Leaflet and OpenStreetMap for real-time bus route tracking. This feature is implemented in the HomePage.js and ViewTicketPage.js components using react-leaflet.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Bus_Application
+Notes
+The app is styled using Tailwind CSS for a modern, responsive user interface.
+You can replace the mock data in buses.json or other files with real-time data as needed.
+Future Improvements
+Add backend services for user authentication and payment handling.
+Integrate real-time location tracking using an external API.
