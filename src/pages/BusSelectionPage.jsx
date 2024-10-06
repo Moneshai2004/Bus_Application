@@ -45,7 +45,7 @@ const BusSelectionPage = () => {
         <p className="text-gray-600 mb-6">Search Tamil Nadu Bus Tickets</p>
 
         <div className="bg-white rounded-lg shadow-md p-6">
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
             <div className="flex-grow">
               <label className="block text-gray-700 text-sm font-bold mb-2">Origin:</label>
               <input
@@ -66,7 +66,7 @@ const BusSelectionPage = () => {
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
             </div>
-            <div>
+            <div className="flex-grow">
               <label className="block text-gray-700 text-sm font-bold mb-2">Date:</label>
               <input
                 type="date"
@@ -75,7 +75,11 @@ const BusSelectionPage = () => {
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
             </div>
-            <Button label="Search" onClick={handleSearch} className="bg-cyan-600 text-white px-6 py-2 rounded-md hover:bg-cyan-700 transition duration-300" />
+            <Button
+              label="Search"
+              onClick={handleSearch}
+              className="bg-cyan-600 text-white px-6 py-2 rounded-md hover:bg-cyan-700 transition duration-300 mt-4 md:mt-0"
+            />
           </div>
         </div>
 

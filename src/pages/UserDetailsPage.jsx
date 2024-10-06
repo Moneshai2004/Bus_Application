@@ -15,16 +15,16 @@ const UserDetailPage = () => {
 
   const handleConfirm = () => {
     // Add user detail confirmation logic here
-    console.log('User Details', { name, email, mobileNumber, age, gender });
+    console.log('User Details', { name  , email  , mobileNumber, age, gender });
     navigate('/payment', { state: { bus, selectedSeats, userDetails: { name, email, mobileNumber, age, gender } } });
   };
 
   return (
-    <body className="bg-cream text-charcoal min-h-screen font-sans leading-normal overflow-x-hidden lg:overflow-auto">
-      <main className="flex-1 md:p-0 lg:pt-8 lg:px-8 md:ml-24 flex flex-col">
-        <section className="bg-cream-lighter p-4 shadow">
+    <div className="bg-cream text-charcoal min-h-screen font-sans leading-normal flex items-center justify-center">
+      <main className="flex-1 md:p-0 lg:pt-8 lg:px-8 md:ml-24 flex flex-col w-full max-w-lg">
+        <section className="bg-cream-lighter p-4 shadow rounded-lg">
           <div className="md:flex">
-            <h2 className="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6">User Details for Booking Seats</h2>
+            <h2 className="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6 text-center">User Details for Booking Seats</h2>
           </div>
           <form>
             <div className="md:flex mb-8">
@@ -32,19 +32,19 @@ const UserDetailPage = () => {
                 <legend className="uppercase tracking-wide text-sm">Personal Information</legend>
               </div>
               <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
-                <div className="mb-4">
-                  <InputField label="Name" value={name} onChange={(e) => setName(e.target.value)} />
+                <div className="mb-6">
+                  <InputField label="Name:  " value={name} onChange={(e) => setName(e.target.value)} className="mb-2" />
                 </div>
-                <div className="mb-4">
-                  <InputField label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <div className="mb-6">
+                  <InputField label="Email: " value={email} onChange={(e) => setEmail(e.target.value)} className="mb-2" />
                 </div>
-                <div className="mb-4">
-                  <InputField label="Mobile Number" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} />
+                <div className="mb-6">
+                  <InputField label="Mobile Number:  " value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} className="mb-2" />
                 </div>
-                <div className="mb-4">
-                  <InputField label="Age" type="number" value={age} onChange={(e) => setAge(e.target.value)} />
+                <div className="mb-6">
+                  <InputField label="Age:  " type="number" value={age} onChange={(e) => setAge(e.target.value)} className="mb-2" />
                 </div>
-                <div className="mb-4">
+                <div className="mb-6">
                   <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Gender</label>
                   <select className="w-full shadow-inner p-4 border-0" value={gender} onChange={(e) => setGender(e.target.value)}>
                     <option value="Male">Male</option>
@@ -57,7 +57,7 @@ const UserDetailPage = () => {
             <div className="md:flex mb-6 border border-t-1 border-b-0 border-x-0 border-cream-dark">
               <div className="md:flex-1 px-3 text-center md:text-right">
                 <input
-                  className="button text-cream-lighter bg-brick hover:bg-brick-dark"
+                  className="button text-cream-lighter bg-brick hover:bg-cyan-500 transition duration-200 ease-in-out"
                   type="button"
                   value="Confirm Booking"
                   onClick={handleConfirm}
@@ -67,7 +67,7 @@ const UserDetailPage = () => {
           </form>
         </section>
       </main>
-    </body>
+    </div>
   );
 };
 

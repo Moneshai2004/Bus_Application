@@ -42,7 +42,8 @@ const ViewTicketPage = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="max-w-[1200px] mx-auto p-6 bg-white rounded-xl shadow-md">
+      {/* Add a margin border with black color */}
+      <div className="max-w-[1200px] mx-auto p-6 bg-white rounded-xl shadow-md border-4 border-black">
         <h2 className="text-3xl font-semibold mb-6 text-blue-gray-900">View Ticket</h2>
 
         <div className="mb-4">

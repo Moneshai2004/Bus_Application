@@ -27,8 +27,8 @@ const PaymentPage = () => {
   };
 
   return (
-    <div className="bg-blue-50 p-4">
-      <div className="credit-card w-full sm:w-auto shadow-lg mx-auto rounded-xl bg-white">
+    <div className="bg-blue-50 min-h-screen flex items-center justify-center p-4">
+      <div className="credit-card w-full sm:w-auto shadow-lg rounded-xl bg-white p-4">
         <header className="flex flex-col justify-center items-center">
           <h1 className="text-xl font-semibold text-gray-700 text-center">Card Payment</h1>
           <div className="flex flex-col justify-center items-center w-full my-4">

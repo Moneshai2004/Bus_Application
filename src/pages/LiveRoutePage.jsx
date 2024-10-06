@@ -13,17 +13,22 @@ L.Icon.Default.mergeOptions({
 });
 
 const LiveRoutePage = () => {
-const chennai = [13.0827, 80.2707]; // Correct Chennai coordinates
+  const chennai = [13.0827, 80.2707]; // Correct Chennai coordinates
   const pondicherry = [11.9130, 79.7400]; // Pondicherry coordinates
 
   const positions = [chennai, pondicherry]; // Array of positions for the route
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h2 className="text-3xl font-semibold mb-4 text-blue-gray-900">Live Bus Route</h2>
-      <p className="mb-4">Your bus is on the way! Track the live location here.</p>
+      <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-blue-gray-900">Live Bus Route</h2>
+      <p className="mb-4 text-center md:text-left">Your bus is on the way! Track the live location here. 🚌</p>
 
-      <MapContainer center={chennai} zoom={10} style={{ height: "400px", width: "800px" }}>
+      <MapContainer
+        center={chennai}
+        zoom={10}
+        style={{ height: "300px", width: "100%", maxWidth: "800px" }} // Adjust to screen size
+        className="rounded-lg shadow-lg"
+      >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
-import InputField from '../components/InputField';
 
 const SignInPage = () => {
   const [mobileNumber, setMobileNumber] = useState('');
@@ -16,13 +15,13 @@ const SignInPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+      {/* Title added here */}
+      <h1 className="text-center text-3xl font-bold text-gray-800 mb-6">Moni Bus Booking</h1>
+      <div className="relative py-3 sm:max-w-xl sm:mx-auto mx-4"> {/* Added mx-4 for horizontal margin */}
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
-            <div>
-              <h1 className="text-2xl font-semibold">Sign In</h1>
-            </div>
+            <h1 className="text-2xl font-semibold text-center">Sign In</h1>
             <div className="divide-y divide-gray-200">
               <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                 <div className="relative">
