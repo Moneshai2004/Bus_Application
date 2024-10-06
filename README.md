@@ -1,2 +1,2 @@
 
-    <title>MyBusBooking README</title>
+    <h1>MyBusBooking</h1>
