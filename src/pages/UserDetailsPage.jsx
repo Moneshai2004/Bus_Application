@@ -1,3 +1,4 @@
+// src/pages/UserDetailPage.js
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
@@ -14,59 +15,69 @@ const UserDetailPage = () => {
   const navigate = useNavigate();
 
   const handleConfirm = () => {
-    // Add user detail confirmation logic here
-    console.log('User Details', { name  , email  , mobileNumber, age, gender });
+    console.log('User Details', { name, email, mobileNumber, age, gender });
     navigate('/payment', { state: { bus, selectedSeats, userDetails: { name, email, mobileNumber, age, gender } } });
   };
 
   return (
-    <div className="bg-cream text-charcoal min-h-screen font-sans leading-normal flex items-center justify-center">
-      <main className="flex-1 md:p-0 lg:pt-8 lg:px-8 md:ml-24 flex flex-col w-full max-w-lg">
-        <section className="bg-cream-lighter p-4 shadow rounded-lg">
-          <div className="md:flex">
-            <h2 className="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6 text-center">User Details for Booking Seats</h2>
+    <div className="bg-blue-50 min-h-screen flex items-center justify-center p-4">
+      <div className="w-full sm:w-auto shadow-lg rounded-xl bg-white p-4">
+        <header className="flex flex-col justify-center items-center">
+          <h1 className="text-xl font-semibold text-gray-700 text-center">User Details for Booking</h1>
+          <div className="w-full my-4">
+            <InputField
+              label="Name : "
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter your name : "
+              className="block w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+            />
           </div>
-          <form>
-            <div className="md:flex mb-8">
-              <div className="md:w-1/3">
-                <legend className="uppercase tracking-wide text-sm">Personal Information</legend>
-              </div>
-              <div className="md:flex-1 mt-2 mb:mt-0 md:px-3">
-                <div className="mb-6">
-                  <InputField label="Name:  " value={name} onChange={(e) => setName(e.target.value)} className="mb-2" />
-                </div>
-                <div className="mb-6">
-                  <InputField label="Email: " value={email} onChange={(e) => setEmail(e.target.value)} className="mb-2" />
-                </div>
-                <div className="mb-6">
-                  <InputField label="Mobile Number:  " value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} className="mb-2" />
-                </div>
-                <div className="mb-6">
-                  <InputField label="Age:  " type="number" value={age} onChange={(e) => setAge(e.target.value)} className="mb-2" />
-                </div>
-                <div className="mb-6">
-                  <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Gender</label>
-                  <select className="w-full shadow-inner p-4 border-0" value={gender} onChange={(e) => setGender(e.target.value)}>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div className="md:flex mb-6 border border-t-1 border-b-0 border-x-0 border-cream-dark">
-              <div className="md:flex-1 px-3 text-center md:text-right">
-                <input
-                  className="button text-cream-lighter bg-brick hover:bg-cyan-500 transition duration-200 ease-in-out"
-                  type="button"
-                  value="Confirm Booking"
-                  onClick={handleConfirm}
-                />
-              </div>
-            </div>
-          </form>
-        </section>
-      </main>
+          <div className="w-full my-4">
+            <InputField
+              label="Email : "
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="block w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+            />
+          </div>
+          <div className="w-full my-4">
+            <InputField
+              label="Mobile Number : "
+              value={mobileNumber}
+              onChange={(e) => setMobileNumber(e.target.value)}
+              placeholder="Enter your mobile number"
+              className="block w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+            />
+          </div>
+          <div className="w-full my-4">
+            <InputField
+              label="Age : "
+              type="number"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              placeholder="Enter your age"
+              className="block w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+            />
+          </div>
+          <div className="w-full my-4">
+            <label className="block text-gray-700">Gender</label>
+            <select
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              className="block w-full px-5 py-2 border rounded-lg bg-white shadow-lg text-gray-700 focus:ring focus:outline-none"
+            >
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </header>
+        <footer className="mt-6 p-4">
+          <Button label="Confirm Booking" onClick={handleConfirm} />
+        </footer>
+      </div>
     </div>
   );
 };
