@@ -51,7 +51,7 @@ const BusSelectionPage = () => {
               <input
                 type="text"
                 value={origin}
-                onChange={(e) => setOrigin(e.target.value)}
+                onChange={(e) => setOrigin(e.target.value.trim())}
                 placeholder="Enter origin"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
@@ -61,7 +61,7 @@ const BusSelectionPage = () => {
               <input
                 type="text"
                 value={destination}
-                onChange={(e) => setDestination(e.target.value)}
+                onChange={(e) => setDestination(e.target.value.trim())}
                 placeholder="Enter destination"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
